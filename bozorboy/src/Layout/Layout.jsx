@@ -3,6 +3,7 @@ import { Link, Outlet } from 'react-router-dom';
 import { FaHome } from "react-icons/fa";
 import { FaShoppingBasket } from "react-icons/fa";
 import { IoMdContact } from "react-icons/io";
+import { BiSolidCategory } from "react-icons/bi";
 
 
 const Layout = () => {
@@ -84,8 +85,8 @@ const Layout = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/contact" className="text-white text-lg flex items-center gap-2">
-                                <IoMdContact /> Contact
+                            <Link to="/category" className="text-white text-lg flex items-center gap-2">
+                                <BiSolidCategory /> Категории
                             </Link>
                         </li>
                     </ul>

@@ -25,6 +25,7 @@ import Layout from './Layout/Layout';
 import { Route, Routes } from 'react-router-dom';
 import Home from './Pages/Home';
 import ProductPage from './Pages/ProductPage';
+import Category from './Pages/Category';
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
             <Route path="/" element={<Layout />}>
                 <Route index element={<Home/>} />
                 <Route path="product/:category" element={<ProductPage/>} />
+                <Route path="category" element={<Category/>} />
                 <Route path="*" element={<p>Path not resolved</p>} />
             </Route>
         </Routes>
