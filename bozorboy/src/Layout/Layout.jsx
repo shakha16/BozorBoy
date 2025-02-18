@@ -1,13 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, createContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { FaHome } from "react-icons/fa";
 import { FaShoppingBasket } from "react-icons/fa";
 import { IoMdContact } from "react-icons/io";
 import { BiSolidCategory } from "react-icons/bi";
 
+export const context = createContext("empty");
 
 const Layout = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [cartF, setCartF] = useState(false);
     const menuRef = useRef(null);
     const buttonRef = useRef(null);
 
@@ -35,7 +37,7 @@ const Layout = () => {
     }, []);
 
     return (
-        <>
+        <context.Provider value={{ cartF, setCartF }}>
             <header className="bg-green-900 p-4">
                 <div className="flex items-center justify-between">
                     {/* Логотип */}
@@ -95,7 +97,17 @@ const Layout = () => {
             <main>
                 <Outlet />
             </main>
-        </>
+            <footer className='fixed bottom-0 w-full text-white flex justify-between p-4'>
+                {
+
+                    cartF &&
+                    <Link className='w-full h-16 rounded-full bg-green-900 text-white flex items-center justify-center gap-2' to="/">
+                        <h2 className='text-2xl'>Корзина</h2>
+                    </Link>
+
+                }
+            </footer>
+        </context.Provider>
     );
 }
 
